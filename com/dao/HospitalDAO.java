@@ -5,7 +5,7 @@ import com.model.Patient;
 
 public class HospitalDAO {
 	//I created database = HospitalDB in MySQL
-    private String url = "jdbc:mysql://localhost:3306/HospitalDB";
+    private String url = "jdbc:mysql://---------/HospitalDB";
     private String user = "root";
     private String pass = "XXXXXXX";
 
