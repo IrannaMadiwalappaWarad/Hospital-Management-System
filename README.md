@@ -12,6 +12,7 @@ Ailment/Diagnosis Categories.
 🛡️ SECURITY_LAYER: * Server-side input validation to prevent negative numerical data.
 Client-side confirmation hooks using SweetAlert2 for data safety.
 🖥️ UI/UX DESIGN: Glassmorphism panels, Neon Green accents (#9BE931), and responsive Flexbox layouts.
+
 ---
 🛠️ Technical Architecture
 
@@ -21,6 +22,7 @@ Backend	Java Servlets (Jakarta EE 10), POJO Architecture
 Database	MySQL 8.0+
 Server	Apache Tomcat 10.1
 Project Design	MVC (Model-View-Controller)
+
 ---
 🚀 Installation & Setup
 
@@ -75,6 +77,7 @@ HospitalMS/
 Jakarta EE Migration: Transitioned from javax to jakarta namespace to support the latest Tomcat 10 specifications.
 DRY (Don't Repeat Yourself): Utilized a unified DAO method managePatient() to handle multiple SQL operations via command parameters.
 Responsive Integrity: Implemented CSS clamp() and table-responsive wrappers to maintain UI alignment across all screen resolutions.
+
 ---
 👤 Author
 
