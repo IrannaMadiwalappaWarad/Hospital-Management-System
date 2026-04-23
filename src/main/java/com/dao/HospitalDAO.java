@@ -7,7 +7,7 @@ public class HospitalDAO {
 	//I created database = HospitalDB in MySQL
     private String url = "jdbc:mysql://localhost:3306/HospitalDB";
     private String user = "root";
-    private String pass = "I@m2w312@nannu";
+    private String pass = "XXXXXXXX";
 
     protected Connection getConnection() throws Exception{
         Connection connection = null;
