@@ -7,53 +7,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        :root { 
-            --neon-green: #9BE931; 
-            --dark-bg: #0B0F1A; 
-            --panel-bg: rgba(22, 28, 42, 0.8); 
-        }
-        body { 
-            background-color: var(--dark-bg); 
-            color: #fff; 
-            font-family: 'Courier New', Courier, monospace; 
-            max-width: 100vw; 
-            overflow-x: hidden; 
-        }
-        .neon-border { 
-            border: 1px solid var(--neon-green); 
-            box-shadow: 0 0 15px rgba(155, 233, 49, 0.2); 
-            background: var(--panel-bg); 
-            border-radius: 8px;
-        }
-        .btn-neon { 
-            border: 1px solid var(--neon-green); 
-            color: var(--neon-green); 
-            background: transparent; 
-            transition: 0.3s; 
-        }
-        .btn-neon:hover { 
-            background: var(--neon-green); 
-            color: var(--dark-bg); 
-        }
-        .neon-text { 
-            color: var(--neon-green); 
-            text-shadow: 0 0 10px var(--neon-green); 
-        }
-        .table-dark { 
-            --bs-table-bg: transparent; 
-            color: white; 
-        }
-        td, th { 
-            border-bottom: 1px solid rgba(155,233,49,0.3) !important; 
-            padding: 12px 15px !important; 
-            white-space: nowrap; /* Keeps text on one line so columns stay neat */
-        }
-        
-        /* The magic fix for the "overlapping" scrollbar */
-        .table-responsive::-webkit-scrollbar { height: 8px; }
-        .table-responsive::-webkit-scrollbar-track { background: var(--dark-bg); }
-        .table-responsive::-webkit-scrollbar-thumb { background: var(--neon-green); border-radius: 4px; }
-    </style>    
+    :root { 
+        --main-indigo: #4f46e5;
+        --table-row-hover: rgba(79, 70, 229, 0.05);
+    }
+    
+    body { 
+        background: #f8fafc; /* Clean off-white */
+        color: #0f172a; 
+        font-family: 'Inter', sans-serif;
+    }
+
+    .neon-border { 
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Fixed Table Visibility */
+    .table-dark { color: #1e293b !important; }
+    
+    .table thead th { 
+        color: var(--main-indigo); 
+        background: #f1f5f9;
+        border-bottom: 2px solid #e2e8f0 !important;
+        font-weight: 700;
+    }
+
+    .table tbody tr:hover { background-color: var(--table-row-hover); }
+
+    /* Button visibility fixes */
+    .btn-outline-info { color: #0891b2; border-color: #0891b2; }
+    .btn-outline-info:hover { background: #0891b2; color: white; }
+    
+    .btn-outline-danger { color: #dc2626; border-color: #dc2626; }
+    .btn-outline-danger:hover { background: #dc2626; color: white; }
+
+    /* Navigation button visibility */
+    .btn-outline-light { border-color: #94a3b8; color: #475569; }
+</style>    
 </head>
 
 <script>
@@ -83,18 +76,29 @@ function confirmDelete(id) {
 }
 </script>
 <body>
-    <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3" style="border-color: var(--neon-green) !important;">
-            <h2 class="neon-text fw-bold m-0">
+    <div class="container mt-4">
+        <div class="border-bottom pb-3 mb-5" style="border-color: var(--neon-green) !important;">
+            
+            <div class="d-flex gap-2 mb-3">
+                <a href="reports.jsp" class="btn btn-outline-info btn-sm">
+                    <i class="fas fa-arrow-left me-2"></i>BACK_TO_ANALYTICS
+                </a>
+                <h2 class="neon-text fw-bold m-0">
                 <i class="fas fa-server me-2"></i>
                 <%= request.getAttribute("title") != null ? request.getAttribute("title") : "CORE_RECORDS" %>
             </h2>
-            <div>
-                <button onclick="window.print()" class="btn btn-neon me-2"><i class="fas fa-print"></i> PRINT</button>
-                <a href="index.jsp" class="btn btn-outline-light"><i class="fas fa-home"></i> EXIT</a>
+            
+                <div class="ms-auto d-flex gap-2">
+                <button onclick="window.print()" class="btn btn-neon btn-sm">
+                    <i class="fas fa-print me-1"></i>PRINT
+                </button>
+                <a href="index.jsp" class="btn btn-outline-light btn-sm">
+                    <i class="fas fa-home me-1"></i>EXIT
+                </a>
             </div>
         </div>
-
+            </div>
+        </div>
         <div class="neon-border p-4 rounded">
             <div class="table-responsive">
                 <table class="table table-dark table-hover mb-0">
@@ -120,12 +124,8 @@ function confirmDelete(id) {
                             <td class="fw-bold text-light">#<%= p.getPatientID() %></td>
                             <td><%= p.getPatientName() %></td>
                             <td><%= p.getAge() %> / <%= p.getGender().charAt(0) %></td>
-                            <td>
-                                <span class="badge" style="background: rgba(155,233,49,0.2); color: var(--neon-green); border: 1px solid var(--neon-green);">
-                                    <%= p.getAilment() %>
-                                </span>
-                            </td>
-                            <td>Dr. <%= p.getAssignedDoctor() %></td>
+                            <td> <%= p.getAilment() %></td>
+                            <td><%= p.getAssignedDoctor() %></td>
                             <td><%= p.getAdmissionDate() %></td>
                             <td>
                                 <a href="updatePatient?id=<%= p.getPatientID() %>" class="btn btn-sm btn-outline-info"><i class="fas fa-pen"></i></a>
@@ -137,10 +137,10 @@ function confirmDelete(id) {
                         <% } %>
                     </tbody>
                 </table>
-            </div> </div>
-             <div class="mt-5 pt-4 text-secondary small border-top border-secondary opacity-50">
+            </div> 
+             </div> 
+               <div class="mt-5 pt-4 text-secondary small border-top border-secondary opacity-50">
             SYSTEM_STATUS: ONLINE // ENCRYPTION: ACTIVE // © 2026 IRANNA M Warad
-        	</div>
-    </div>
+        </div>
 </body>
 </html>

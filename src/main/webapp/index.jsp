@@ -4,78 +4,61 @@
     <title>HMS | OS_V1</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { 
-            --neon-green: #9BE931; 
-            --dark-bg: #0B0F1A; 
-            --panel-bg: rgba(22, 28, 42, 0.8); 
-        }
-        
-        body { 
-            background-color: var(--dark-bg); 
-            color: #fff; 
-            font-family: 'Courier New', Courier, monospace; 
-            margin: 0;
-            /* Changed height to min-height to allow scrolling on small screens */
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-        }
+   <style>
+    :root { 
+        --glass-bg: rgba(255, 255, 255, 0.7);
+        --main-purple: #6366f1;
+        --soft-gradient: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
+    }
+    
+    body { 
+        background: var(--soft-gradient);
+        color: #1f2937; 
+        font-family: 'Inter', sans-serif; 
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .container {
-            padding: 30px 15px;
-        }
+    .neon-text { 
+        background: linear-gradient(to right, #4f46e5, #9333ea);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+        font-size: clamp(2rem, 5vw, 4rem); 
+    }
 
-        .neon-text { 
-            color: var(--neon-green); 
-            text-shadow: 0 0 10px var(--neon-green);
-            /* Fluid typography: shrinks on small screens */
-            font-size: clamp(1.8rem, 6vw, 4rem); 
-        }
+    .neon-border { 
+        background: var(--glass-bg);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+        border-radius: 20px; 
+        transition: 0.4s;
+    }
 
-        .neon-border { 
-            border: 1px solid var(--neon-green); 
-            box-shadow: 0 0 15px rgba(155, 233, 49, 0.2); 
-            background: var(--panel-bg); 
-            backdrop-filter: blur(10px); 
-            border-radius: 15px; 
-            transition: 0.3s;
-            height: 100%; /* Ensures cards in a row have equal height */
-        }
+    .neon-border:hover { 
+        background: rgba(255, 255, 255, 0.9);
+        transform: scale(1.02); 
+    }
 
-        .neon-border:hover { 
-            box-shadow: 0 0 25px rgba(155, 233, 49, 0.6); 
-            transform: translateY(-10px); 
-        }
+    .btn-neon { 
+        background: white; 
+        border: 2px solid var(--main-purple); 
+        color: var(--main-purple); 
+        border-radius: 50px;
+        padding: 8px 30px;
+        font-weight: bold;
+        transition: 0.3s; 
+    }
 
-        .btn-neon { 
-            background: transparent; 
-            border: 1px solid var(--neon-green); 
-            color: var(--neon-green); 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            font-weight: bold; 
-            transition: 0.4s; 
-        }
-
-        .btn-neon:hover { 
-            background: var(--neon-green); 
-            color: var(--dark-bg); 
-            box-shadow: 0 0 20px var(--neon-green); 
-        }
-
-        /* Fix for smaller screens to prevent content cut-off */
-        @media (max-width: 768px) {
-            body {
-                align-items: flex-start; /* Start from top on mobile */
-            }
-            .neon-border {
-                padding: 30px !important;
-            }
-        }
-    </style>
+    .btn-neon:hover { 
+        background: var(--main-purple); 
+        color: white; 
+    }
+</style>
 </head>
 <body>
     <div class="container text-center">
